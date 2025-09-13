@@ -1,0 +1,19 @@
+services:
+  vipeen_database:
+    image: postgres:16-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+      - vipeen_database_data:/var/lib/postgresql/data
+
+  vipeen_adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+
+volumes:
+  vipeen_database_data:
